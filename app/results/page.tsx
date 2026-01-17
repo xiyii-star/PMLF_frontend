@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { Search, FileText, Calendar, Home } from 'lucide-react'
 import { apiClient, HistoryResult } from '@/lib/api'
 
@@ -35,13 +34,13 @@ export default function ResultsList() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-3xl font-bold">历史分析记录</h1>
-            <Link
+            <a
               href="/"
               className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
             >
               <Home className="w-5 h-5" />
               <span>返回主页</span>
-            </Link>
+            </a>
           </div>
 
           {/* Search */}
@@ -64,12 +63,12 @@ export default function ResultsList() {
             <p className="text-gray-500 mb-4">
               {searchTerm ? '未找到匹配的结果' : '暂无历史记录'}
             </p>
-            <Link
+            <a
               href="/pipeline/new"
               className="inline-block px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition"
             >
               创建新分析
-            </Link>
+            </a>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -86,9 +85,9 @@ export default function ResultsList() {
               })
 
               return (
-                <Link
+                <a
                   key={result.task_id}
-                  href={`/results/${result.task_id}`}
+                  href={`/#/results/${result.task_id}`}
                   className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 >
                   {/* Header with gradient */}
@@ -132,7 +131,7 @@ export default function ResultsList() {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </a>
               )
             })}
           </div>

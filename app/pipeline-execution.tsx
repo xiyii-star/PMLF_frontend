@@ -1,10 +1,8 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { useRouter, useParams } from 'next/navigation'
 import { CheckCircle2, Circle, Loader2, AlertCircle, ArrowLeft } from 'lucide-react'
 import { apiClient, TaskStatus } from '@/lib/api'
-import Link from 'next/link'
 
 const PHASES = [
   { id: 'phase1', name: '论文搜索', description: '搜索和筛选相关论文' },
@@ -17,15 +15,18 @@ const PHASES = [
   { id: 'phase8', name: '结果输出', description: '保存和可视化结果' },
 ]
 
-export default function PipelineExecution() {
-  const params = useParams()
-  const router = useRouter()
-  const taskId = params.id as string
+interface PipelineExecutionProps {
+  taskId: string
+}
+
+export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
   const [taskStatus, setTaskStatus] = useState<TaskStatus | null>(null)
   const [logs, setLogs] = useState<Array<{ timestamp: string; message: string }>>([])
   const [wsConnected, setWsConnected] = useState(false)
+  const [connectionMode, setConnectionMode] = useState<'websocket' | 'polling'>('websocket')
   const wsRef = useRef<WebSocket | null>(null)
   const logsEndRef = useRef<HTMLDivElement>(null)
+  const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     if (!taskId) return
@@ -39,10 +40,22 @@ export default function PipelineExecution() {
     // Poll status
     const statusInterval = setInterval(loadStatus, 2000)
 
+    // Fallback to polling if WebSocket doesn't connect within 5 seconds
+    const wsTimeout = setTimeout(() => {
+      if (!wsConnected && connectionMode === 'websocket') {
+        console.log('WebSocket connection timeout, falling back to polling')
+        startPolling()
+      }
+    }, 5000)
+
     return () => {
       clearInterval(statusInterval)
+      clearTimeout(wsTimeout)
       if (wsRef.current) {
         wsRef.current.close()
+      }
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current)
       }
     }
   }, [taskId])
@@ -56,10 +69,10 @@ export default function PipelineExecution() {
     // Redirect to results when completed
     if (taskStatus?.status === 'completed') {
       setTimeout(() => {
-        router.push(`/results/${taskId}`)
+        window.location.hash = `#/results/${taskId}`
       }, 2000)
     }
-  }, [taskStatus?.status, taskId, router])
+  }, [taskStatus?.status, taskId])
 
   const loadStatus = async () => {
     try {
@@ -77,6 +90,7 @@ export default function PipelineExecution() {
 
       ws.onopen = () => {
         setWsConnected(true)
+        setConnectionMode('websocket')
         wsRef.current = ws
       }
 
@@ -92,12 +106,40 @@ export default function PipelineExecution() {
 
       ws.onclose = () => {
         setWsConnected(false)
-        // Try to reconnect after 3 seconds
-        setTimeout(connectWebSocket, 3000)
+        // Try to reconnect after 3 seconds if still in websocket mode
+        if (connectionMode === 'websocket') {
+          setTimeout(connectWebSocket, 3000)
+        }
       }
     } catch (error) {
       console.error('Failed to connect WebSocket:', error)
     }
+  }
+
+  const startPolling = () => {
+    console.log('Starting polling mode for logs')
+    setConnectionMode('polling')
+
+    // Clear any existing polling interval
+    if (pollingIntervalRef.current) {
+      clearInterval(pollingIntervalRef.current)
+    }
+
+    // Poll every 2 seconds
+    pollingIntervalRef.current = setInterval(async () => {
+      try {
+        // 使用相对路径，通过 ESA 边缘函数反向代理
+        const response = await fetch(`/api/pipeline/logs/${taskId}`)
+        if (response.ok) {
+          const data = await response.json()
+          if (data.logs && Array.isArray(data.logs)) {
+            setLogs(data.logs)
+          }
+        }
+      } catch (error) {
+        console.error('Failed to poll logs:', error)
+      }
+    }, 2000)
   }
 
   const getPhaseStatus = (phaseId: string) => {
@@ -136,18 +178,18 @@ export default function PipelineExecution() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Link href="/" className="text-gray-600 hover:text-gray-900">
+              <a href="/" className="text-gray-600 hover:text-gray-900">
                 <ArrowLeft className="w-5 h-5" />
-              </Link>
+              </a>
               <div>
                 <h1 className="text-2xl font-bold">Pipeline 执行中</h1>
                 <p className="text-sm text-gray-600">任务 ID: {taskId}</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
-              <div className={`w-3 h-3 rounded-full ${wsConnected ? 'bg-green-500' : 'bg-red-500'}`} />
+              <div className={`w-3 h-3 rounded-full ${connectionMode === 'websocket' && wsConnected ? 'bg-green-500' : connectionMode === 'polling' ? 'bg-yellow-500' : 'bg-red-500'}`} />
               <span className="text-sm text-gray-600">
-                {wsConnected ? '已连接' : '未连接'}
+                {connectionMode === 'websocket' && wsConnected ? 'WebSocket 已连接' : connectionMode === 'polling' ? '轮询模式' : '连接中...'}
               </span>
             </div>
           </div>
@@ -198,12 +240,12 @@ export default function PipelineExecution() {
                 )}
                 {taskStatus.status === 'completed' && (
                   <div className="mt-4">
-                    <Link
-                      href={`/results/${taskId}`}
+                    <a
+                      href={`/#/results/${taskId}`}
                       className="block w-full text-center px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition"
                     >
                       查看结果 →
-                    </Link>
+                    </a>
                   </div>
                 )}
               </div>

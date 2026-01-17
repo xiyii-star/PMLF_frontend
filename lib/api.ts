@@ -2,7 +2,9 @@
  * API Client for EvoNarrator Backend
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+// 使用空字符串表示相对路径，通过 ESA 边缘函数反向代理
+// 本地开发时使用 localhost
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:8000' : '')
 
 export interface PipelineStartRequest {
   topic: string
@@ -120,10 +122,25 @@ class ApiClient {
   }
 
   getVisualizationUrl(taskId: string): string {
+    // 如果 baseUrl 为空，使用相对路径
+    if (!this.baseUrl) {
+      return `/api/results/${taskId}/visualization`
+    }
     return `${this.baseUrl}/api/results/${taskId}/visualization`
   }
 
   getWebSocketUrl(taskId: string): string {
+    // 如果 baseUrl 为空，使用当前域名构建 WebSocket URL
+    if (!this.baseUrl) {
+      if (typeof window !== 'undefined') {
+        const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws'
+        const host = window.location.host
+        return `${protocol}://${host}/api/pipeline/logs/${taskId}`
+      }
+      // 服务端渲染时的默认值
+      return `/api/pipeline/logs/${taskId}`
+    }
+
     const wsProtocol = this.baseUrl.startsWith('https') ? 'wss' : 'ws'
     const wsBase = this.baseUrl.replace(/^https?/, wsProtocol)
     return `${wsBase}/api/pipeline/logs/${taskId}`

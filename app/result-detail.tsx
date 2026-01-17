@@ -1,14 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useParams } from 'next/navigation'
-import Link from 'next/link'
 import { Network, FileText, BookOpen, ArrowLeft, ExternalLink, Home, Maximize } from 'lucide-react'
 import { apiClient } from '@/lib/api'
 
-export default function ResultDetail() {
-  const params = useParams()
-  const taskId = params.id as string
+interface ResultDetailProps {
+  taskId: string
+}
+
+export default function ResultDetail({ taskId }: ResultDetailProps) {
   const [result, setResult] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'overview' | 'graph' | 'papers'>('overview')
@@ -50,9 +50,9 @@ export default function ResultDetail() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-600 mb-4">未找到结果</p>
-          <Link href="/results" className="text-primary-600 hover:underline">
+          <a href="/results" className="text-primary-600 hover:underline">
             返回列表
-          </Link>
+          </a>
         </div>
       </div>
     )
@@ -71,21 +71,21 @@ export default function ResultDetail() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Link href="/results" className="text-gray-600 hover:text-gray-900">
+              <a href="/results" className="text-gray-600 hover:text-gray-900">
                 <ArrowLeft className="w-5 h-5" />
-              </Link>
+              </a>
               <div>
                 <h1 className="text-2xl font-bold">{result.topic || '分析结果'}</h1>
                 <p className="text-sm text-gray-600">任务 ID: {taskId}</p>
               </div>
             </div>
-            <Link
+            <a
               href="/"
               className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
             >
               <Home className="w-5 h-5" />
               <span>返回主页</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

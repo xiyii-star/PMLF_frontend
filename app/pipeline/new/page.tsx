@@ -1,12 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { Search, Loader2, GitBranch, GitCommit, FileText } from 'lucide-react'
 import { apiClient, PipelineStartRequest } from '@/lib/api'
 
 export default function NewPipeline() {
-  const router = useRouter()
   const [topic, setTopic] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -71,7 +69,7 @@ export default function NewPipeline() {
       }
 
       const task = await apiClient.startPipeline(request)
-      router.push(`/pipeline/${task.task_id}`)
+      window.location.hash = `#/pipeline/${task.task_id}`
     } catch (err: any) {
       setError(err.message || '启动分析失败')
       setLoading(false)
@@ -242,7 +240,7 @@ export default function NewPipeline() {
             <div className="flex space-x-4 pt-4">
               <button
                 type="button"
-                onClick={() => router.back()}
+                onClick={() => window.history.back()}
                 className="flex-1 px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
                 disabled={loading}
               >

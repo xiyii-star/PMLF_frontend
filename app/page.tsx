@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { Search, BookOpen, Network, FileText, Lightbulb, History } from 'lucide-react'
 import { apiClient } from '@/lib/api'
 
@@ -53,13 +52,13 @@ export default function Home() {
           <p className="text-xl text-gray-600 mb-8">
             基于深度分析的论文知识图谱构建与演化路径可视化
           </p>
-          <Link
+          <a
             href="/pipeline/new"
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition text-lg"
           >
             <Search className="w-5 h-5 mr-2" />
             开始分析
-          </Link>
+          </a>
         </div>
 
         {/* Features */}
@@ -125,16 +124,16 @@ export default function Home() {
               历史分析记录
             </h3>
             {history.length > 0 && (
-              <Link href="/results" className="text-primary-600 hover:underline">
+              <a href="/results" className="text-primary-600 hover:underline">
                 查看全部 →
-              </Link>
+              </a>
             )}
           </div>
           {loading ? (
             <div className="text-center py-8 text-gray-500">加载中...</div>
           ) : history.length === 0 ? (
             <div className="text-center py-8 text-gray-500">
-              暂无历史记录，<Link href="/pipeline/new" className="text-primary-600 hover:underline">开始第一个分析</Link>
+              暂无历史记录，<a href="/pipeline/new" className="text-primary-600 hover:underline">开始第一个分析</a>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -151,9 +150,9 @@ export default function Home() {
                 })
 
                 return (
-                  <Link
+                  <a
                     key={item.task_id}
-                    href={`/results/${item.task_id}`}
+                    href={`/#/results/${item.task_id}`}
                     className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
                   >
                     {/* Header with gradient */}
@@ -197,7 +196,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 )
               })}
             </div>

@@ -1,0 +1,25 @@
+{
+  // ESA Pages 配置文件
+  // 用于配置边缘函数反向代理和静态资源托管
+
+  "name": "evonarrator-frontend",
+
+  // 边缘函数入口文件（构建后的位置）
+  "entry": "./out/_worker.js",
+
+  // 安装依赖命令
+  "installCommand": "npm install",
+
+  // 构建命令
+  "buildCommand": "npm run build",
+
+  // 静态资源配置
+  "assets": {
+    // 构建产物目录（Next.js 静态导出目录）
+    "directory": "./out",
+
+    // 404 策略：使用自定义 404.html 页面
+    // 该页面会将路径转换为 hash 路由格式
+    "notFoundStrategy": "404Page"
+  }
+}

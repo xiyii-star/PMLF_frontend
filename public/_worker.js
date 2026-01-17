@@ -4,7 +4,7 @@
  */
 
 // 后端服务器地址
-const BACKEND_URL = 'http://47.102.99.87:8000'
+const BACKEND_URL = 'http://47.102.99.87'
 
 // 默认导出对象，包含 fetch 函数
 export default {

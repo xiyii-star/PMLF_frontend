@@ -16,10 +16,8 @@
   // 静态资源配置
   "assets": {
     // 构建产物目录（Next.js 静态导出目录）
-    "directory": "./out",
-
-    // 404 策略：使用自定义 404.html 页面
-    // 该页面会将路径转换为 hash 路由格式
-    "notFoundStrategy": "404Page"
+    "directory": "./out"
+    // 注意：不配置 notFoundStrategy，让边缘函数处理所有请求
+    // 边缘函数会处理 API 请求和静态文件请求
   }
 }

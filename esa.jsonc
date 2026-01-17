@@ -1,23 +1,9 @@
 {
-  // ESA Pages 配置文件
-  // 用于配置边缘函数反向代理和静态资源托管
-
   "name": "evonarrator-frontend",
-
-  // 边缘函数入口文件（构建后的位置）
   "entry": "./out/_worker.js",
-
-  // 安装依赖命令
   "installCommand": "npm install",
-
-  // 构建命令
   "buildCommand": "npm run build",
-
-  // 静态资源配置
   "assets": {
-    // 构建产物目录（Next.js 静态导出目录）
     "directory": "./out"
-    // 注意：不配置 notFoundStrategy，让边缘函数处理所有请求
-    // 边缘函数会处理 API 请求和静态文件请求
   }
 }

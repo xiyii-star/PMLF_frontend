@@ -18,6 +18,9 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
   }
 
   useEffect(() => {
+    // 滚动到页面顶部
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
     if (taskId) {
       loadResult()
     }

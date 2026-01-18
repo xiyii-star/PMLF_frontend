@@ -15,6 +15,9 @@ export default function HashRouter() {
         return
       }
 
+      // 滚动到页面顶部
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+
       // Parse hash routes
       const pipelineMatch = hash.match(/^\/pipeline\/([^/]+)$/)
       const resultsMatch = hash.match(/^\/results\/([^/]+)$/)

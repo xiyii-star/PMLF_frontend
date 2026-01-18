@@ -28,9 +28,16 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
   const wsRef = useRef<WebSocket | null>(null)
   const logsEndRef = useRef<HTMLDivElement>(null)
   const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const scrollPositionRef = useRef<number>(0)
+  const isInitialLoadRef = useRef<boolean>(true)
 
   useEffect(() => {
     if (!taskId) return
+
+    // 保存当前滚动位置
+    const saveScrollPosition = () => {
+      scrollPositionRef.current = window.scrollY
+    }
 
     // Load initial status
     loadStatus()
@@ -39,7 +46,10 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
     connectWebSocket()
 
     // Poll status
-    const statusInterval = setInterval(loadStatus, 2000)
+    const statusInterval = setInterval(() => {
+      saveScrollPosition()
+      loadStatus()
+    }, 2000)
 
     // Fallback to polling if WebSocket doesn't connect within 5 seconds
     const wsTimeout = setTimeout(() => {
@@ -48,6 +58,11 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
         startPolling()
       }
     }, 5000)
+
+    // 标记初始加载完成
+    setTimeout(() => {
+      isInitialLoadRef.current = false
+    }, 1000)
 
     return () => {
       clearInterval(statusInterval)
@@ -77,8 +92,16 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
 
   const loadStatus = async () => {
     try {
+      const savedScrollY = scrollPositionRef.current
       const status = await apiClient.getTaskStatus(taskId)
       setTaskStatus(status)
+
+      // 恢复滚动位置（仅在非初始加载时）
+      if (!isInitialLoadRef.current && savedScrollY > 0) {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: savedScrollY, behavior: 'auto' })
+        })
+      }
     } catch (error) {
       console.error('Failed to load status:', error)
     }

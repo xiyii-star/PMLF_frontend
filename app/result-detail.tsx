@@ -259,8 +259,8 @@ function PapersTab({ taskId }: { taskId: string }) {
                 onClick={() => setSelectedPaper(paper)}
                 className={`w-full text-left p-3 rounded-lg border transition ${
                   selectedPaper?.id === paper.id
-                    ? 'border-primary-500 bg-primary-50'
-                    : 'border-white/20 hover:bg-transparent'
+                    ? 'border-primary-500 bg-primary-500/20 text-white'
+                    : 'border-white/20 hover:bg-white/10 text-white'
                 }`}
               >
                 <div className="font-semibold text-sm mb-1 line-clamp-2">{paper.title}</div>

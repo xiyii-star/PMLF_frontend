@@ -113,7 +113,7 @@ export default function NewPipeline() {
               {/* 新增：3列布局的参数设置 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 {/* 种子论文数 */}
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div className="bg-white/20 p-4 rounded-lg border border-white/30">
                   <div className="flex items-center mb-2">
                     <FileText className="w-4 h-4 text-blue-600 mr-2" />
                     <label className="block text-sm font-medium text-white">
@@ -126,14 +126,14 @@ export default function NewPipeline() {
                     max="20"
                     value={config.seed_count}
                     onChange={(e) => setConfig({ ...config, seed_count: parseInt(e.target.value) || 1 })}
-                    className="w-full px-3 py-2 border border-white/20 rounded focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white focus:ring-2 focus:ring-primary-500 focus:bg-white/20"
                     disabled={loading}
                   />
                   <p className="text-xs text-indigo-300 mt-1">初始搜索获取的论文数量</p>
                 </div>
 
                 {/* 引用数 */}
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div className="bg-white/20 p-4 rounded-lg border border-white/30">
                   <div className="flex items-center mb-2">
                     <GitBranch className="w-4 h-4 text-green-600 mr-2" />
                     <label className="block text-sm font-medium text-white">
@@ -146,14 +146,14 @@ export default function NewPipeline() {
                     max="10"
                     value={config.citations_per_seed}
                     onChange={(e) => setConfig({ ...config, citations_per_seed: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-white/20 rounded focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white focus:ring-2 focus:ring-primary-500 focus:bg-white/20"
                     disabled={loading}
                   />
                   <p className="text-xs text-indigo-300 mt-1">每篇论文向下追踪的数量</p>
                 </div>
 
                 {/* 参考文献数 */}
-                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div className="bg-white/20 p-4 rounded-lg border border-white/30">
                   <div className="flex items-center mb-2">
                     <GitCommit className="w-4 h-4 text-purple-600 mr-2" />
                     <label className="block text-sm font-medium text-white">
@@ -166,7 +166,7 @@ export default function NewPipeline() {
                     max="10"
                     value={config.references_per_seed}
                     onChange={(e) => setConfig({ ...config, references_per_seed: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-white/20 rounded focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded text-white focus:ring-2 focus:ring-primary-500 focus:bg-white/20"
                     disabled={loading}
                   />
                   <p className="text-xs text-indigo-300 mt-1">每篇论文向上追溯的数量</p>
@@ -245,7 +245,7 @@ export default function NewPipeline() {
               <button
                 type="button"
                 onClick={() => window.history.back()}
-                className="flex-1 px-6 py-3 border border-white/20 rounded-lg hover:bg-gray-50 transition"
+                className="flex-1 px-6 py-3 border border-white/20 rounded-lg hover:bg-white/20 transition"
                 disabled={loading}
               >
                 取消

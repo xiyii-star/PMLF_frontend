@@ -27,6 +27,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
   const [connectionMode, setConnectionMode] = useState<'websocket' | 'polling'>('websocket')
   const wsRef = useRef<WebSocket | null>(null)
   const logsEndRef = useRef<HTMLDivElement>(null)
+  const logsContainerRef = useRef<HTMLDivElement>(null)
   const pollingIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const scrollPositionRef = useRef<number>(0)
   const isInitialLoadRef = useRef<boolean>(true)
@@ -77,8 +78,10 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
   }, [taskId])
 
   useEffect(() => {
-    // Auto-scroll logs
-    logsEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    // Auto-scroll logs - 只滚动日志容器，不影响页面滚动
+    if (logsContainerRef.current) {
+      logsContainerRef.current.scrollTop = logsContainerRef.current.scrollHeight
+    }
   }, [logs])
 
   useEffect(() => {
@@ -183,7 +186,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
       case 'failed':
         return <AlertCircle className="w-6 h-6 text-red-500" />
       default:
-        return <Circle className="w-6 h-6 text-gray-300" />
+        return <Circle className="w-6 h-6 text-indigo-300" />
     }
   }
 
@@ -210,7 +213,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
                 <ArrowLeft className="w-5 h-5" />
               </a>
               <div>
-                <h1 className="text-2xl font-bold">Pipeline 执行中</h1>
+                <h1 className="text-2xl font-bold text-white">Pipeline 执行中</h1>
                 <p className="text-sm text-indigo-200">任务 ID: {taskId}</p>
               </div>
             </div>
@@ -229,13 +232,13 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
           {/* Progress Panel */}
           <div className="lg:col-span-1">
             <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
-              <h2 className="text-xl font-bold mb-6">执行进度</h2>
+              <h2 className="text-xl font-bold mb-6 text-white">执行进度</h2>
               <div className="space-y-4">
                 {PHASES.map((phase, idx) => (
                   <div key={phase.id} className="flex items-start space-x-3">
                     {getPhaseIcon(phase.id)}
                     <div className="flex-1">
-                      <div className="font-semibold">{phase.name}</div>
+                      <div className="font-semibold text-white">{phase.name}</div>
                       <div className="text-sm text-indigo-200">{phase.description}</div>
                       {taskStatus.progress[phase.id] && (
                         <div className="text-xs text-indigo-300 mt-1">
@@ -248,9 +251,9 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
               </div>
 
               {/* Status Summary */}
-              <div className="mt-6 pt-6 border-t">
+              <div className="mt-6 pt-6 border-t border-white/20">
                 <div className="text-sm text-indigo-200 mb-2">当前状态</div>
-                <div className="text-lg font-semibold">
+                <div className="text-lg font-semibold text-white">
                   {taskStatus.status === 'running' && '运行中'}
                   {taskStatus.status === 'completed' && '已完成'}
                   {taskStatus.status === 'failed' && '失败'}
@@ -284,7 +287,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
           <div className="lg:col-span-2">
             <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold">实时日志</h2>
+                <h2 className="text-xl font-bold text-white">实时日志</h2>
                 <button
                   onClick={() => setLogs([])}
                   className="text-sm text-indigo-200 hover:text-white"
@@ -292,7 +295,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
                   清空
                 </button>
               </div>
-              <div className="bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-lg h-[600px] overflow-y-auto">
+              <div ref={logsContainerRef} className="bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-lg h-[600px] overflow-y-auto">
                 {logs.length === 0 ? (
                   <div className="text-indigo-300">等待日志输出...</div>
                 ) : (

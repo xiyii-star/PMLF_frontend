@@ -176,8 +176,8 @@ export default function NewPipeline() {
             </div>
 
             {/* LLM Configuration */}
-            <div className="border-t pt-6">
-              <h2 className="text-lg font-semibold mb-4">LLM 配置</h2>
+            <div className="border-t border-white/20 pt-6">
+              <h2 className="text-lg font-semibold mb-4 text-white">LLM 配置</h2>
 
               <div className="space-y-4">
                 {/* Model */}

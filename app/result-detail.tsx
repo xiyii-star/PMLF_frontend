@@ -165,25 +165,25 @@ function OverviewTab({ result, taskId, onTabChange }: { result: any; taskId: str
 
       {/* Quick Links */}
       <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-bold mb-4">快速访问</h2>
+        <h2 className="text-xl font-bold mb-4 text-white">快速访问</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <button
             onClick={() => onTabChange('graph')}
-            className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-transparent transition text-left"
+            className="flex items-center space-x-3 p-4 border border-white/20 rounded-lg hover:bg-white/10 transition text-left"
           >
             <Network className="w-6 h-6 text-primary-600" />
             <div>
-              <div className="font-semibold">知识图谱</div>
+              <div className="font-semibold text-white">知识图谱</div>
               <div className="text-sm text-indigo-200">查看交互式知识图谱</div>
             </div>
           </button>
           <button
             onClick={() => onTabChange('papers')}
-            className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-transparent transition text-left"
+            className="flex items-center space-x-3 p-4 border border-white/20 rounded-lg hover:bg-white/10 transition text-left"
           >
             <BookOpen className="w-6 h-6 text-primary-600" />
             <div>
-              <div className="font-semibold">论文列表</div>
+              <div className="font-semibold text-white">论文列表</div>
               <div className="text-sm text-indigo-200">查看所有论文详情</div>
             </div>
           </button>
@@ -202,7 +202,7 @@ function GraphTab({ taskId }: { taskId: string }) {
   return (
     <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">知识图谱可视化</h2>
+        <h2 className="text-xl font-bold text-white">知识图谱可视化</h2>
         <button
           onClick={handleFullscreen}
           className="flex items-center space-x-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition"
@@ -211,7 +211,7 @@ function GraphTab({ taskId }: { taskId: string }) {
           <span>全屏查看</span>
         </button>
       </div>
-      <div className="border rounded-lg overflow-hidden" style={{ height: 'calc(100vh - 250px)', minHeight: '600px' }}>
+      <div className="border border-white/20 rounded-lg overflow-hidden" style={{ height: 'calc(100vh - 250px)', minHeight: '600px' }}>
         <iframe
           src={apiClient.getVisualizationUrl(taskId)}
           className="w-full h-full border-0"
@@ -251,7 +251,7 @@ function PapersTab({ taskId }: { taskId: string }) {
       {/* Paper List */}
       <div className="lg:col-span-1">
         <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold mb-4">论文列表 ({papers.length})</h2>
+          <h2 className="text-xl font-bold mb-4 text-white">论文列表 ({papers.length})</h2>
           <div className="space-y-2 max-h-[800px] overflow-y-auto">
             {papers.map((paper) => (
               <button
@@ -293,7 +293,7 @@ function PaperDetail({ paper }: { paper: any }) {
   return (
     <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6 space-y-6">
       <div>
-        <h2 className="text-2xl font-bold mb-2">{paper.title}</h2>
+        <h2 className="text-2xl font-bold mb-2 text-white">{paper.title}</h2>
         <div className="flex flex-wrap items-center gap-4 text-sm text-indigo-200">
           <span>{paper.year}</span>
           <span>·</span>
@@ -316,35 +316,35 @@ function PaperDetail({ paper }: { paper: any }) {
 
       {paper.abstract && (
         <div>
-          <h3 className="font-semibold mb-2">摘要</h3>
+          <h3 className="font-semibold mb-2 text-white">摘要</h3>
           <p className="text-white/90">{paper.abstract}</p>
         </div>
       )}
 
       {analysis.problem && (
         <div>
-          <h3 className="font-semibold mb-2">研究问题</h3>
+          <h3 className="font-semibold mb-2 text-white">研究问题</h3>
           <p className="text-white/90">{analysis.problem}</p>
         </div>
       )}
 
       {analysis.method && (
         <div>
-          <h3 className="font-semibold mb-2">方法</h3>
+          <h3 className="font-semibold mb-2 text-white">方法</h3>
           <p className="text-white/90 whitespace-pre-wrap">{analysis.method}</p>
         </div>
       )}
 
       {analysis.limitation && (
         <div>
-          <h3 className="font-semibold mb-2">局限性</h3>
+          <h3 className="font-semibold mb-2 text-white">局限性</h3>
           <p className="text-white/90 whitespace-pre-wrap">{analysis.limitation}</p>
         </div>
       )}
 
       {analysis.future_work && (
         <div>
-          <h3 className="font-semibold mb-2">未来工作</h3>
+          <h3 className="font-semibold mb-2 text-white">未来工作</h3>
           <p className="text-white/90 whitespace-pre-wrap">{analysis.future_work}</p>
         </div>
       )}
@@ -385,9 +385,9 @@ function SurveyTab({ taskId }: { taskId: string }) {
 
   return (
     <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold mb-6">深度调研报告</h2>
+      <h2 className="text-2xl font-bold mb-6 text-white">深度调研报告</h2>
       <div className="prose max-w-none">
-        <pre className="whitespace-pre-wrap font-sans text-sm">
+        <pre className="whitespace-pre-wrap font-sans text-sm text-white/90">
           {JSON.stringify(survey, null, 2)}
         </pre>
       </div>
@@ -432,7 +432,7 @@ function IdeasTab({ taskId }: { taskId: string }) {
     <div className="space-y-4">
       {ideas.map((idea: any, idx: number) => (
         <div key={idx} className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
-          <h3 className="text-xl font-bold mb-2">
+          <h3 className="text-xl font-bold mb-2 text-white">
             {idea.title || idea.idea_title || `研究想法 ${idx + 1}`}
           </h3>
           {idea.description && (
@@ -442,8 +442,8 @@ function IdeasTab({ taskId }: { taskId: string }) {
             <p className="text-white/90 mb-4">{idea.summary}</p>
           )}
           {idea.feasibility && (
-            <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-              <div className="font-semibold mb-1">可行性分析</div>
+            <div className="mt-4 p-3 bg-indigo-500/20 rounded-lg border border-indigo-400/30">
+              <div className="font-semibold mb-1 text-white">可行性分析</div>
               <p className="text-sm text-white/90">{idea.feasibility}</p>
             </div>
           )}

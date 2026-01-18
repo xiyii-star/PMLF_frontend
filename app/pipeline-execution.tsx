@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { CheckCircle2, Circle, Loader2, AlertCircle, ArrowLeft } from 'lucide-react'
 import { apiClient, TaskStatus } from '@/lib/api'
+import AnimatedBackground from './components/AnimatedBackground'
 
 const PHASES = [
   { id: 'phase1', name: '论文搜索', description: '搜索和筛选相关论文' },
@@ -165,30 +166,34 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
 
   if (!taskStatus) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary-600" />
+      <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+        <AnimatedBackground />
+        <Loader2 className="w-8 h-8 animate-spin text-indigo-400 relative z-10" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* 动画背景 */}
+      <AnimatedBackground />
+
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="relative bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/" className="text-gray-600 hover:text-gray-900">
+              <a href="/" className="text-indigo-200 hover:text-white transition">
                 <ArrowLeft className="w-5 h-5" />
               </a>
               <div>
                 <h1 className="text-2xl font-bold">Pipeline 执行中</h1>
-                <p className="text-sm text-gray-600">任务 ID: {taskId}</p>
+                <p className="text-sm text-indigo-200">任务 ID: {taskId}</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
               <div className={`w-3 h-3 rounded-full ${connectionMode === 'websocket' && wsConnected ? 'bg-green-500' : connectionMode === 'polling' ? 'bg-yellow-500' : 'bg-red-500'}`} />
-              <span className="text-sm text-gray-600">
+              <span className="text-sm text-indigo-200">
                 {connectionMode === 'websocket' && wsConnected ? 'WebSocket 已连接' : connectionMode === 'polling' ? '轮询模式' : '连接中...'}
               </span>
             </div>
@@ -200,7 +205,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Progress Panel */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
               <h2 className="text-xl font-bold mb-6">执行进度</h2>
               <div className="space-y-4">
                 {PHASES.map((phase, idx) => (
@@ -208,9 +213,9 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
                     {getPhaseIcon(phase.id)}
                     <div className="flex-1">
                       <div className="font-semibold">{phase.name}</div>
-                      <div className="text-sm text-gray-600">{phase.description}</div>
+                      <div className="text-sm text-indigo-200">{phase.description}</div>
                       {taskStatus.progress[phase.id] && (
-                        <div className="text-xs text-gray-500 mt-1">
+                        <div className="text-xs text-indigo-300 mt-1">
                           {JSON.stringify(taskStatus.progress[phase.id], null, 2)}
                         </div>
                       )}
@@ -221,7 +226,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
 
               {/* Status Summary */}
               <div className="mt-6 pt-6 border-t">
-                <div className="text-sm text-gray-600 mb-2">当前状态</div>
+                <div className="text-sm text-indigo-200 mb-2">当前状态</div>
                 <div className="text-lg font-semibold">
                   {taskStatus.status === 'running' && '运行中'}
                   {taskStatus.status === 'completed' && '已完成'}
@@ -229,7 +234,7 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
                   {taskStatus.status === 'pending' && '等待中'}
                 </div>
                 {taskStatus.current_phase && (
-                  <div className="text-sm text-gray-600 mt-1">
+                  <div className="text-sm text-indigo-200 mt-1">
                     当前阶段: {taskStatus.current_phase}
                   </div>
                 )}
@@ -254,23 +259,23 @@ export default function PipelineExecution({ taskId }: PipelineExecutionProps) {
 
           {/* Logs Panel */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-bold">实时日志</h2>
                 <button
                   onClick={() => setLogs([])}
-                  className="text-sm text-gray-600 hover:text-gray-900"
+                  className="text-sm text-indigo-200 hover:text-white"
                 >
                   清空
                 </button>
               </div>
               <div className="bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-lg h-[600px] overflow-y-auto">
                 {logs.length === 0 ? (
-                  <div className="text-gray-500">等待日志输出...</div>
+                  <div className="text-indigo-300">等待日志输出...</div>
                 ) : (
                   logs.map((log, idx) => (
                     <div key={idx} className="mb-1">
-                      <span className="text-gray-500">[{new Date(log.timestamp).toLocaleTimeString()}]</span>{' '}
+                      <span className="text-indigo-300">[{new Date(log.timestamp).toLocaleTimeString()}]</span>{' '}
                       <span>{log.message}</span>
                     </div>
                   ))

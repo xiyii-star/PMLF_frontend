@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Network, FileText, BookOpen, ArrowLeft, ExternalLink, Home, Maximize } from 'lucide-react'
 import { apiClient } from '@/lib/api'
+import AnimatedBackground from './components/AnimatedBackground'
 
 interface ResultDetailProps {
   taskId: string
@@ -36,10 +37,11 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
+      <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+        <AnimatedBackground />
+        <div className="text-center relative z-10">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">加载中...</p>
+          <p className="text-indigo-200">加载中...</p>
         </div>
       </div>
     )
@@ -47,9 +49,10 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
 
   if (!result) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-600 mb-4">未找到结果</p>
+      <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+        <AnimatedBackground />
+        <div className="text-center relative z-10">
+          <p className="text-indigo-200 mb-4">未找到结果</p>
           <a href="/results" className="text-primary-600 hover:underline">
             返回列表
           </a>
@@ -65,23 +68,26 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen relative overflow-hidden bg-transparent">
+      {/* 动画背景 */}
+      <AnimatedBackground />
+
       {/* Header */}
-      <div className="bg-white shadow-sm">
+      <div className="relative bg-white/10 backdrop-blur-md shadow-sm border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <a href="/results" className="text-gray-600 hover:text-gray-900">
+              <a href="/results" className="text-indigo-200 hover:text-white">
                 <ArrowLeft className="w-5 h-5" />
               </a>
               <div>
                 <h1 className="text-2xl font-bold">{result.topic || '分析结果'}</h1>
-                <p className="text-sm text-gray-600">任务 ID: {taskId}</p>
+                <p className="text-sm text-indigo-200">任务 ID: {taskId}</p>
               </div>
             </div>
             <a
               href="/"
-              className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition"
+              className="flex items-center space-x-2 px-4 py-2 text-indigo-200 hover:text-white hover:bg-white/20 rounded-lg transition"
             >
               <Home className="w-5 h-5" />
               <span>返回主页</span>
@@ -91,7 +97,7 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white border-b">
+      <div className="relative bg-white/10 backdrop-blur-md border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-1 overflow-x-auto">
             {tabs.map((tab) => {
@@ -103,7 +109,7 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
                   className={`flex items-center space-x-2 px-4 py-3 border-b-2 transition ${
                     activeTab === tab.id
                       ? 'border-primary-600 text-primary-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                      : 'border-transparent text-indigo-200 hover:text-white'
                   }`}
                 >
                   <Icon className="w-5 h-5" />
@@ -116,7 +122,7 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === 'overview' && <OverviewTab result={result} taskId={taskId} onTabChange={handleTabChange} />}
         {activeTab === 'graph' && <GraphTab taskId={taskId} />}
         {activeTab === 'papers' && <PapersTab taskId={taskId} />}
@@ -139,46 +145,46 @@ function OverviewTab({ result, taskId, onTabChange }: { result: any; taskId: str
     <div className="space-y-6">
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
           <div className="text-3xl font-bold text-primary-600">{totalPapers}</div>
-          <div className="text-sm text-gray-600 mt-1">总论文数</div>
+          <div className="text-sm text-indigo-200 mt-1">总论文数</div>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
           <div className="text-3xl font-bold text-green-600">{successfulAnalysis}</div>
-          <div className="text-sm text-gray-600 mt-1">成功分析</div>
+          <div className="text-sm text-indigo-200 mt-1">成功分析</div>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
           <div className="text-3xl font-bold text-blue-600">{graphNodes}</div>
-          <div className="text-sm text-gray-600 mt-1">图谱节点</div>
+          <div className="text-sm text-indigo-200 mt-1">图谱节点</div>
         </div>
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
           <div className="text-3xl font-bold text-purple-600">{graphEdges}</div>
-          <div className="text-sm text-gray-600 mt-1">图谱边</div>
+          <div className="text-sm text-indigo-200 mt-1">图谱边</div>
         </div>
       </div>
 
       {/* Quick Links */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
         <h2 className="text-xl font-bold mb-4">快速访问</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <button
             onClick={() => onTabChange('graph')}
-            className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-gray-50 transition text-left"
+            className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-transparent transition text-left"
           >
             <Network className="w-6 h-6 text-primary-600" />
             <div>
               <div className="font-semibold">知识图谱</div>
-              <div className="text-sm text-gray-600">查看交互式知识图谱</div>
+              <div className="text-sm text-indigo-200">查看交互式知识图谱</div>
             </div>
           </button>
           <button
             onClick={() => onTabChange('papers')}
-            className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-gray-50 transition text-left"
+            className="flex items-center space-x-3 p-4 border rounded-lg hover:bg-transparent transition text-left"
           >
             <BookOpen className="w-6 h-6 text-primary-600" />
             <div>
               <div className="font-semibold">论文列表</div>
-              <div className="text-sm text-gray-600">查看所有论文详情</div>
+              <div className="text-sm text-indigo-200">查看所有论文详情</div>
             </div>
           </button>
         </div>
@@ -194,7 +200,7 @@ function GraphTab({ taskId }: { taskId: string }) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">知识图谱可视化</h2>
         <button
@@ -237,14 +243,14 @@ function PapersTab({ taskId }: { taskId: string }) {
   }
 
   if (loading) {
-    return <div className="text-center py-12 text-gray-500">加载中...</div>
+    return <div className="text-center py-12 text-indigo-300">加载中...</div>
   }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Paper List */}
       <div className="lg:col-span-1">
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
           <h2 className="text-xl font-bold mb-4">论文列表 ({papers.length})</h2>
           <div className="space-y-2 max-h-[800px] overflow-y-auto">
             {papers.map((paper) => (
@@ -254,11 +260,11 @@ function PapersTab({ taskId }: { taskId: string }) {
                 className={`w-full text-left p-3 rounded-lg border transition ${
                   selectedPaper?.id === paper.id
                     ? 'border-primary-500 bg-primary-50'
-                    : 'border-gray-200 hover:bg-gray-50'
+                    : 'border-white/20 hover:bg-transparent'
                 }`}
               >
                 <div className="font-semibold text-sm mb-1 line-clamp-2">{paper.title}</div>
-                <div className="text-xs text-gray-600">
+                <div className="text-xs text-indigo-200">
                   {paper.year} · {paper.cited_by_count} 引用
                 </div>
               </button>
@@ -272,7 +278,7 @@ function PapersTab({ taskId }: { taskId: string }) {
         {selectedPaper ? (
           <PaperDetail paper={selectedPaper} />
         ) : (
-          <div className="bg-white rounded-lg shadow-md p-12 text-center text-gray-500">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-12 text-center text-indigo-300">
             选择一篇论文查看详情
           </div>
         )}
@@ -285,10 +291,10 @@ function PaperDetail({ paper }: { paper: any }) {
   const analysis = paper.rag_analysis || paper.deep_analysis || {}
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 space-y-6">
+    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6 space-y-6">
       <div>
         <h2 className="text-2xl font-bold mb-2">{paper.title}</h2>
-        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+        <div className="flex flex-wrap items-center gap-4 text-sm text-indigo-200">
           <span>{paper.year}</span>
           <span>·</span>
           <span>{paper.cited_by_count} 引用</span>
@@ -302,7 +308,7 @@ function PaperDetail({ paper }: { paper: any }) {
           )}
         </div>
         {paper.authors && (
-          <div className="mt-2 text-sm text-gray-600">
+          <div className="mt-2 text-sm text-indigo-200">
             作者: {paper.authors.join(', ')}
           </div>
         )}
@@ -311,35 +317,35 @@ function PaperDetail({ paper }: { paper: any }) {
       {paper.abstract && (
         <div>
           <h3 className="font-semibold mb-2">摘要</h3>
-          <p className="text-gray-700">{paper.abstract}</p>
+          <p className="text-white/90">{paper.abstract}</p>
         </div>
       )}
 
       {analysis.problem && (
         <div>
           <h3 className="font-semibold mb-2">研究问题</h3>
-          <p className="text-gray-700">{analysis.problem}</p>
+          <p className="text-white/90">{analysis.problem}</p>
         </div>
       )}
 
       {analysis.method && (
         <div>
           <h3 className="font-semibold mb-2">方法</h3>
-          <p className="text-gray-700 whitespace-pre-wrap">{analysis.method}</p>
+          <p className="text-white/90 whitespace-pre-wrap">{analysis.method}</p>
         </div>
       )}
 
       {analysis.limitation && (
         <div>
           <h3 className="font-semibold mb-2">局限性</h3>
-          <p className="text-gray-700 whitespace-pre-wrap">{analysis.limitation}</p>
+          <p className="text-white/90 whitespace-pre-wrap">{analysis.limitation}</p>
         </div>
       )}
 
       {analysis.future_work && (
         <div>
           <h3 className="font-semibold mb-2">未来工作</h3>
-          <p className="text-gray-700 whitespace-pre-wrap">{analysis.future_work}</p>
+          <p className="text-white/90 whitespace-pre-wrap">{analysis.future_work}</p>
         </div>
       )}
     </div>
@@ -366,19 +372,19 @@ function SurveyTab({ taskId }: { taskId: string }) {
   }
 
   if (loading) {
-    return <div className="text-center py-12 text-gray-500">加载中...</div>
+    return <div className="text-center py-12 text-indigo-300">加载中...</div>
   }
 
   if (!survey || Object.keys(survey).length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-12 text-center text-gray-500">
+      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-12 text-center text-indigo-300">
         暂无调研报告
       </div>
     )
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
       <h2 className="text-2xl font-bold mb-6">深度调研报告</h2>
       <div className="prose max-w-none">
         <pre className="whitespace-pre-wrap font-sans text-sm">
@@ -411,12 +417,12 @@ function IdeasTab({ taskId }: { taskId: string }) {
   }
 
   if (loading) {
-    return <div className="text-center py-12 text-gray-500">加载中...</div>
+    return <div className="text-center py-12 text-indigo-300">加载中...</div>
   }
 
   if (ideas.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-12 text-center text-gray-500">
+      <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-12 text-center text-indigo-300">
         暂无研究想法
       </div>
     )
@@ -425,20 +431,20 @@ function IdeasTab({ taskId }: { taskId: string }) {
   return (
     <div className="space-y-4">
       {ideas.map((idea: any, idx: number) => (
-        <div key={idx} className="bg-white rounded-lg shadow-md p-6">
+        <div key={idx} className="bg-white/10 backdrop-blur-md rounded-lg shadow-md p-6">
           <h3 className="text-xl font-bold mb-2">
             {idea.title || idea.idea_title || `研究想法 ${idx + 1}`}
           </h3>
           {idea.description && (
-            <p className="text-gray-700 mb-4">{idea.description}</p>
+            <p className="text-white/90 mb-4">{idea.description}</p>
           )}
           {idea.summary && (
-            <p className="text-gray-700 mb-4">{idea.summary}</p>
+            <p className="text-white/90 mb-4">{idea.summary}</p>
           )}
           {idea.feasibility && (
             <div className="mt-4 p-3 bg-blue-50 rounded-lg">
               <div className="font-semibold mb-1">可行性分析</div>
-              <p className="text-sm text-gray-700">{idea.feasibility}</p>
+              <p className="text-sm text-white/90">{idea.feasibility}</p>
             </div>
           )}
         </div>

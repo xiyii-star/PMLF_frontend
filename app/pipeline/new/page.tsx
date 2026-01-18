@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Search, Loader2, GitBranch, GitCommit, FileText } from 'lucide-react'
 import { apiClient, PipelineStartRequest } from '@/lib/api'
+import AnimatedBackground from '../../components/AnimatedBackground'
 
 export default function NewPipeline() {
   const [topic, setTopic] = useState('')
@@ -77,34 +78,37 @@ export default function NewPipeline() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-3xl font-bold mb-6">新建分析任务</h1>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* 动画背景 */}
+      <AnimatedBackground />
+
+      <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl p-8">
+          <h1 className="text-3xl font-bold mb-6 text-white">新建分析任务</h1>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Topic Input */}
             <div>
-              <label htmlFor="topic" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="topic" className="block text-sm font-medium text-white mb-2">
                 研究主题 *
               </label>
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-indigo-300 w-5 h-5" />
                 <input
                   id="topic"
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   placeholder="例如: transformer, computer vision, natural language processing"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-indigo-300 focus:ring-2 focus:ring-indigo-400 focus:bg-white/20 transition"
                   disabled={loading}
                 />
               </div>
             </div>
 
             {/* Search Configuration */}
-            <div className="border-t pt-6">
-              <h2 className="text-lg font-semibold mb-4">检索参数</h2>
+            <div className="border-t border-white/20 pt-6">
+              <h2 className="text-lg font-semibold mb-4 text-white">检索参数</h2>
               
               {/* 新增：3列布局的参数设置 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -112,7 +116,7 @@ export default function NewPipeline() {
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <div className="flex items-center mb-2">
                     <FileText className="w-4 h-4 text-blue-600 mr-2" />
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-white">
                       种子论文数
                     </label>
                   </div>
@@ -122,17 +126,17 @@ export default function NewPipeline() {
                     max="20"
                     value={config.seed_count}
                     onChange={(e) => setConfig({ ...config, seed_count: parseInt(e.target.value) || 1 })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-white/20 rounded focus:ring-2 focus:ring-primary-500"
                     disabled={loading}
                   />
-                  <p className="text-xs text-gray-500 mt-1">初始搜索获取的论文数量</p>
+                  <p className="text-xs text-indigo-300 mt-1">初始搜索获取的论文数量</p>
                 </div>
 
                 {/* 引用数 */}
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <div className="flex items-center mb-2">
                     <GitBranch className="w-4 h-4 text-green-600 mr-2" />
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-white">
                       引用扩展 (Citations)
                     </label>
                   </div>
@@ -142,17 +146,17 @@ export default function NewPipeline() {
                     max="10"
                     value={config.citations_per_seed}
                     onChange={(e) => setConfig({ ...config, citations_per_seed: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-white/20 rounded focus:ring-2 focus:ring-primary-500"
                     disabled={loading}
                   />
-                  <p className="text-xs text-gray-500 mt-1">每篇论文向下追踪的数量</p>
+                  <p className="text-xs text-indigo-300 mt-1">每篇论文向下追踪的数量</p>
                 </div>
 
                 {/* 参考文献数 */}
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <div className="flex items-center mb-2">
                     <GitCommit className="w-4 h-4 text-purple-600 mr-2" />
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-white">
                       参考回溯 (Refs)
                     </label>
                   </div>
@@ -162,10 +166,10 @@ export default function NewPipeline() {
                     max="10"
                     value={config.references_per_seed}
                     onChange={(e) => setConfig({ ...config, references_per_seed: parseInt(e.target.value) || 0 })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-white/20 rounded focus:ring-2 focus:ring-primary-500"
                     disabled={loading}
                   />
-                  <p className="text-xs text-gray-500 mt-1">每篇论文向上追溯的数量</p>
+                  <p className="text-xs text-indigo-300 mt-1">每篇论文向上追溯的数量</p>
                 </div>
               </div>
 
@@ -178,7 +182,7 @@ export default function NewPipeline() {
               <div className="space-y-4">
                 {/* Model */}
                 <div>
-                  <label htmlFor="model" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="model" className="block text-sm font-medium text-white mb-2">
                     模型 (Model) *
                   </label>
                   <input
@@ -187,15 +191,15 @@ export default function NewPipeline() {
                     value={llmConfig.model}
                     onChange={(e) => setLlmConfig({ ...llmConfig, model: e.target.value })}
                     placeholder="例如: gpt-4o-mini, gpt-4o, gpt-3.5-turbo"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-white/20 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     disabled={loading}
                   />
-                  <p className="text-xs text-gray-500 mt-1">OpenAI 模型名称</p>
+                  <p className="text-xs text-indigo-300 mt-1">OpenAI 模型名称</p>
                 </div>
 
                 {/* API Key */}
                 <div>
-                  <label htmlFor="api_key" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="api_key" className="block text-sm font-medium text-white mb-2">
                     API Key *
                   </label>
                   <input
@@ -204,15 +208,15 @@ export default function NewPipeline() {
                     value={llmConfig.api_key}
                     onChange={(e) => setLlmConfig({ ...llmConfig, api_key: e.target.value })}
                     placeholder="sk-..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent font-mono"
+                    className="w-full px-4 py-3 border border-white/20 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent font-mono"
                     disabled={loading}
                   />
-                  <p className="text-xs text-gray-500 mt-1">OpenAI API 密钥</p>
+                  <p className="text-xs text-indigo-300 mt-1">OpenAI API 密钥</p>
                 </div>
 
                 {/* Base URL */}
                 <div>
-                  <label htmlFor="base_url" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="base_url" className="block text-sm font-medium text-white mb-2">
                     Base URL
                   </label>
                   <input
@@ -221,10 +225,10 @@ export default function NewPipeline() {
                     value={llmConfig.base_url}
                     onChange={(e) => setLlmConfig({ ...llmConfig, base_url: e.target.value })}
                     placeholder="https://api.openai.com/v1"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-white/20 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     disabled={loading}
                   />
-                  <p className="text-xs text-gray-500 mt-1">API 基础地址（使用代理或兼容服务时修改）</p>
+                  <p className="text-xs text-indigo-300 mt-1">API 基础地址（使用代理或兼容服务时修改）</p>
                 </div>
               </div>
             </div>
@@ -241,7 +245,7 @@ export default function NewPipeline() {
               <button
                 type="button"
                 onClick={() => window.history.back()}
-                className="flex-1 px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
+                className="flex-1 px-6 py-3 border border-white/20 rounded-lg hover:bg-gray-50 transition"
                 disabled={loading}
               >
                 取消

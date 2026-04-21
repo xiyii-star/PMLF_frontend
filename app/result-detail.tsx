@@ -195,8 +195,32 @@ function OverviewTab({ result, taskId, onTabChange }: { result: any; taskId: str
 }
 
 function GraphTab({ taskId }: { taskId: string }) {
+  const [result, setResult] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    loadGraphData()
+  }, [taskId])
+
+  const loadGraphData = async () => {
+    try {
+      const data = await apiClient.getStaticResult(taskId)
+      setResult(data)
+    } catch (error) {
+      console.error('Failed to load graph data:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const handleFullscreen = () => {
-    window.open(apiClient.getVisualizationUrl(taskId), '_blank')
+    if (result?.files?.visualization) {
+      window.open(result.files.visualization, '_blank')
+    }
+  }
+
+  if (loading) {
+    return <div className="text-center py-12 text-indigo-300">加载中...</div>
   }
 
   return (
@@ -212,11 +236,17 @@ function GraphTab({ taskId }: { taskId: string }) {
         </button>
       </div>
       <div className="border border-white/20 rounded-lg overflow-hidden" style={{ height: 'calc(100vh - 250px)', minHeight: '600px' }}>
-        <iframe
-          src={apiClient.getVisualizationUrl(taskId)}
-          className="w-full h-full border-0"
-          title="Knowledge Graph Visualization"
-        />
+        {result?.files?.visualization ? (
+          <iframe
+            src={result.files.visualization}
+            className="w-full h-full border-0"
+            title="Knowledge Graph Visualization"
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full text-indigo-300">
+            暂无可视化数据
+          </div>
+        )}
       </div>
     </div>
   )
@@ -233,8 +263,11 @@ function PapersTab({ taskId }: { taskId: string }) {
 
   const loadPapers = async () => {
     try {
-      const data = await apiClient.getPapers(taskId)
-      setPapers(data)
+      const data = await apiClient.getStaticResult(taskId)
+      setPapers(data.papers || [])
+      if (data.papers && data.papers.length > 0) {
+        setSelectedPaper(data.papers[0])
+      }
     } catch (error) {
       console.error('Failed to load papers:', error)
     } finally {

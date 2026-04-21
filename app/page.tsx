@@ -23,7 +23,7 @@ export default function Home() {
 
   const loadHistory = async () => {
     try {
-      const data = await apiClient.listResults()
+      const data = await apiClient.listStaticResults()
       setHistory(data)
     } catch (error) {
       console.error('Failed to load history:', error)

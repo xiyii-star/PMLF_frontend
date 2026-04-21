@@ -101,8 +101,54 @@ class ApiClient {
     return this.request<HistoryResult[]>('/api/results')
   }
 
+  async listStaticResults(): Promise<HistoryResult[]> {
+    const TASK_ID = '8ae2e56c-e8f2-4199-8fc8-b33b94ca1b3a'
+    const TOPIC = 'natural_language_processing'
+    const TS = '20260114_164909'
+    const prefix = `/data/${TASK_ID}`
+    return [
+      {
+        task_id: TASK_ID,
+        topic: 'natural language processing',
+        timestamp: TS,
+        paper_count: 86,
+        created_at: '2026-01-14T16:49:09',
+        files: {
+          papers_data: `${prefix}_papers_${TOPIC}_${TS}.json`,
+          graph_data: `${prefix}_graph_data_${TOPIC}_${TS}.json`,
+          visualization: `${prefix}_graph_viz_${TOPIC}_${TS}.html`,
+          deep_survey: `${prefix}_deep_survey_${TOPIC}_${TS}.json`,
+          research_ideas: `${prefix}_research_ideas_${TOPIC}_${TS}.json`,
+        },
+      },
+    ]
+  }
+
   async getResult(taskId: string): Promise<any> {
     return this.request(`/api/results/${taskId}`)
+  }
+
+  async getStaticResult(taskId: string): Promise<any> {
+    const staticResults = await this.listStaticResults()
+    const result = staticResults.find(r => r.task_id === taskId)
+    if (!result) throw new Error('Result not found')
+    
+    const files = result.files
+    const [papers, graphData, deepSurvey, researchIdeas] = await Promise.all([
+      files.papers_data ? fetch(files.papers_data).then(r => r.json()) : Promise.resolve([]),
+      files.graph_data ? fetch(files.graph_data).then(r => r.json()) : Promise.resolve({ nodes: [], edges: [] }),
+      files.deep_survey ? fetch(files.deep_survey).then(r => r.json()) : Promise.resolve(null),
+      files.research_ideas ? fetch(files.research_ideas).then(r => r.json()) : Promise.resolve(null),
+    ])
+    
+    return {
+      ...result,
+      papers,
+      graph_data: graphData,
+      summary: { successful_analysis: papers?.length || 0 },
+      deep_survey: deepSurvey,
+      research_ideas: researchIdeas,
+    }
   }
 
   async getPapers(taskId: string): Promise<Paper[]> {

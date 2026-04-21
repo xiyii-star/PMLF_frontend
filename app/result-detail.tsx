@@ -26,7 +26,7 @@ export default function ResultDetail({ taskId }: ResultDetailProps) {
 
   const loadResult = async () => {
     try {
-      const data = await apiClient.getResult(taskId)
+      const data = await apiClient.getStaticResult(taskId)
       setResult(data)
     } catch (error) {
       console.error('Failed to load result:', error)

@@ -1,0 +1,1211 @@
+{
+  "topic": "natural language processing",
+  "timestamp": "2026-01-14T16:34:05.390372",
+  "pruning_stats": {
+    "original_papers": 86,
+    "pruned_papers": 16,
+    "removed_papers": 70,
+    "pruning_mode": "comprehensive",
+    "strong_components_count": 4,
+    "components_with_seed": 0,
+    "largest_component_size": 6,
+    "seed_papers": 2,
+    "original_edges": 99,
+    "strong_edges": 14,
+    "weak_edges_removed": 3,
+    "retention_rate": 0.18604651162790697,
+    "relation_type_distribution": {
+      "Extends": 2,
+      "Overcomes": 8,
+      "Baselines": 3,
+      "Adapts_to": 3,
+      "Alternative": 1
+    }
+  },
+  "evolutionary_paths": [
+    {
+      "thread_type": "convergence",
+      "pattern_type": "The Convergence (汇聚模式)",
+      "title": "多技术路线汇聚到 The authors conducted a systematic review and meta-analysis to aggregate and ana",
+      "narrative": "**背景**: 在2020年之前，该领域存在多个独立的研究方向。**路线1** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线2** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题。这些方向各自为政，缺乏系统性整合。\n\n**汇聚**: 论文《Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis》(2020) 在此背景下应运而生，它通过 The authors conducted a systematic review and meta-analysis to aggregate and ana 将这 2 条独立路线有机整合，形成了统一的技术框架来解决 There is a lack of consolidated and systematic understanding of the clinical, la。\n\n**意义**: 这种多方向汇聚为该领域提供了理论整合的范例，使得原本分散的技术路线得以协同发挥作用，推动了领域的理论统一和实践深化。",
+      "center_paper": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+      "routes_count": 2,
+      "routes": [
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W3002108456",
+              "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+              "year": 2020,
+              "cited_by_count": 22489
+            },
+            {
+              "paper_id": "W3001118548",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020,
+              "cited_by_count": 51227
+            }
+          ]
+        },
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W3001118548",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020,
+              "cited_by_count": 51227
+            }
+          ]
+        }
+      ],
+      "papers": [
+        {
+          "paper_id": "W3009951436",
+          "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+          "year": 2020,
+          "cited_by_count": 2477,
+          "role": "center"
+        },
+        {
+          "paper_id": "W3002108456",
+          "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+          "year": 2020,
+          "cited_by_count": 22489
+        },
+        {
+          "paper_id": "W3001118548",
+          "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+          "year": 2020,
+          "cited_by_count": 51227
+        },
+        {
+          "paper_id": "W3001118548",
+          "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+          "year": 2020,
+          "cited_by_count": 51227
+        }
+      ],
+      "total_citations": 127420,
+      "visual_structure": "2 Routes -> Center",
+      "relation_chain": [
+        {
+          "from_paper": {
+            "id": "W3002108456",
+            "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+            "year": 2020
+          },
+          "to_paper": {
+            "id": "W3009951436",
+            "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+            "year": 2020
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "被Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis整合",
+          "route_id": 1,
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W3001118548",
+            "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+            "year": 2020
+          },
+          "to_paper": {
+            "id": "W3009951436",
+            "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+            "year": 2020
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "被Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis整合",
+          "route_id": 2,
+          "direction": "chronological"
+        }
+      ],
+      "component_id": 130223326670592
+    },
+    {
+      "thread_type": "divergence",
+      "pattern_type": "The Divergence (分化模式)",
+      "title": "针对 Lack of understanding of clinical features and progression of 2019 novel coronav 的多技术路线博弈",
+      "narrative": "**焦点**: 论文《Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China》(2020) 是该领域的基石工作，它聚焦于 Lack of understanding of clinical features and progression of 2019 novel coronav，但留下了 未找到明确的局限性描述 的问题。\n\n**分歧**: 学术界对此产生了不同的演进路线。**路线1** (纵向深化): 针对「未找到明确的局限性描述」，通过 The authors conducted a systematic review and meta-analysis to aggregate and ana 实现突破；**路线2** (微创新): 保留核心架构并扩展，采用 The authors conducted a systematic review and meta-analysis to aggregate and ana。\n\n**对比**: 这些路线共同推动了该领域痛点问题的解决，形成了多角度攻克的局面。（详见各路线论文的性能对比）",
+      "center_paper": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+      "routes_count": 2,
+      "routes": [
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W3009951436",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020,
+              "cited_by_count": 2477
+            }
+          ]
+        },
+        {
+          "relation_type": "Extends",
+          "papers": [
+            {
+              "paper_id": "W3002108456",
+              "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+              "year": 2020,
+              "cited_by_count": 22489
+            },
+            {
+              "paper_id": "W3009951436",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020,
+              "cited_by_count": 2477
+            }
+          ]
+        }
+      ],
+      "papers": [
+        {
+          "paper_id": "W3001118548",
+          "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+          "year": 2020,
+          "cited_by_count": 51227,
+          "role": "center"
+        },
+        {
+          "paper_id": "W3009951436",
+          "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+          "year": 2020,
+          "cited_by_count": 2477
+        },
+        {
+          "paper_id": "W3002108456",
+          "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+          "year": 2020,
+          "cited_by_count": 22489
+        },
+        {
+          "paper_id": "W3009951436",
+          "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+          "year": 2020,
+          "cited_by_count": 2477
+        }
+      ],
+      "total_citations": 78670,
+      "visual_structure": "Center -> 2 Routes",
+      "relation_chain": [
+        {
+          "from_paper": {
+            "id": "W3001118548",
+            "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+            "year": 2020
+          },
+          "to_paper": {
+            "id": "W3009951436",
+            "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+            "year": 2020
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "Was_Overcome_By",
+          "route_id": 1,
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W3001118548",
+            "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+            "year": 2020
+          },
+          "to_paper": {
+            "id": "W3002108456",
+            "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+            "year": 2020
+          },
+          "relation_type": "Extends",
+          "narrative_relation": "Was_Extended_By",
+          "route_id": 2,
+          "direction": "chronological"
+        }
+      ],
+      "component_id": 130223326670592
+    },
+    {
+      "thread_type": "convergence",
+      "pattern_type": "The Convergence (汇聚模式)",
+      "title": "多技术路线汇聚到 The authors propose a vector space model for automatic indexing, where entities ",
+      "narrative": "**背景**: 在1975年之前，该领域存在多个独立的研究方向。**路线1** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线2** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线3** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线4** (克服型): 识别了「- The method relies heavily on medium frequency terms and skewed frequency distr」，为中心论文提供了待解决的问题。这些方向各自为政，缺乏系统性整合。\n\n**汇聚**: 论文《A vector space model for automatic indexing》(1975) 在此背景下应运而生，它通过 The authors propose a vector space model for automatic indexing, where entities  将这 4 条独立路线有机整合，形成了统一的技术框架来解决 In document retrieval systems, stored entities (documents) are often compared wi。\n\n**意义**: 这种多方向汇聚标志着该领域从探索阶段迈入系统化阶段，使得原本分散的技术路线得以协同发挥作用，推动了领域的理论统一和实践深化。",
+      "center_paper": "A vector space model for automatic indexing",
+      "routes_count": 4,
+      "routes": [
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W2075006521",
+              "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+              "year": 1973,
+              "cited_by_count": 571
+            },
+            {
+              "paper_id": "W2144211451",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972,
+              "cited_by_count": 4313
+            }
+          ]
+        },
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W2144211451",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972,
+              "cited_by_count": 4313
+            }
+          ]
+        },
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W1908696901",
+              "title": "A Theory of Indexing",
+              "year": 1975,
+              "cited_by_count": 120
+            }
+          ]
+        },
+        {
+          "relation_type": "Overcomes",
+          "papers": [
+            {
+              "paper_id": "W2568360633",
+              "title": "Contribution to the Theory of Indexing",
+              "year": 1973,
+              "cited_by_count": 17
+            }
+          ]
+        }
+      ],
+      "papers": [
+        {
+          "paper_id": "W2165612380",
+          "title": "A vector space model for automatic indexing",
+          "year": 1975,
+          "cited_by_count": 7329,
+          "role": "center"
+        },
+        {
+          "paper_id": "W2075006521",
+          "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+          "year": 1973,
+          "cited_by_count": 571
+        },
+        {
+          "paper_id": "W2144211451",
+          "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+          "year": 1972,
+          "cited_by_count": 4313
+        },
+        {
+          "paper_id": "W2144211451",
+          "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+          "year": 1972,
+          "cited_by_count": 4313
+        },
+        {
+          "paper_id": "W1908696901",
+          "title": "A Theory of Indexing",
+          "year": 1975,
+          "cited_by_count": 120
+        },
+        {
+          "paper_id": "W2568360633",
+          "title": "Contribution to the Theory of Indexing",
+          "year": 1973,
+          "cited_by_count": 17
+        }
+      ],
+      "total_citations": 16663,
+      "visual_structure": "4 Routes -> Center",
+      "relation_chain": [
+        {
+          "from_paper": {
+            "id": "W2075006521",
+            "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+            "year": 1973
+          },
+          "to_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "被A vector space model for automatic indexing整合",
+          "route_id": 1,
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W2144211451",
+            "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+            "year": 1972
+          },
+          "to_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "被A vector space model for automatic indexing整合",
+          "route_id": 2,
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W1908696901",
+            "title": "A Theory of Indexing",
+            "year": 1975
+          },
+          "to_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "被A vector space model for automatic indexing整合",
+          "route_id": 3,
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W2568360633",
+            "title": "Contribution to the Theory of Indexing",
+            "year": 1973
+          },
+          "to_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "被A vector space model for automatic indexing整合",
+          "route_id": 4,
+          "direction": "chronological"
+        }
+      ],
+      "component_id": 130223330780800
+    },
+    {
+      "thread_type": "chain",
+      "pattern_type": "The Chain (线性链条)",
+      "title": "从 The authors propose interpreting term specificity statistically, as a function o 到 Vector Space Models (VSMs) of semantics are introduced as a method to represent  的演进之路",
+      "narrative": "**起源** (1972年): 论文《A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL》首次提出了 The authors propose interpreting term specificity statistically, as a function o 来解决 Term specificity in information retrieval is traditionally interpreted based on ，开创了这一研究方向。然而，该工作在 未找到明确的局限性描述 方面仍存在局限性。\n\n**克服局限** (1975年): 针对前人工作在「未找到明确的局限性描述」方面的不足，论文《A vector space model for automatic indexing》通过 The authors propose a vector space model for automatic indexing, where entities  实现了突破性改进。\n\n**跨域迁移** (2010年): 论文《From Frequency to Meaning: Vector Space Models of Semantics》将前人在「原领域」的技术成功迁移到「新领域」，通过 Vector Space Models (VSMs) of semantics are introduced as a method to represent  验证了方法的泛化能力。",
+      "papers": [
+        {
+          "paper_id": "W2144211451",
+          "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+          "year": 1972,
+          "cited_by_count": 4313
+        },
+        {
+          "paper_id": "W2165612380",
+          "title": "A vector space model for automatic indexing",
+          "year": 1975,
+          "cited_by_count": 7329
+        },
+        {
+          "paper_id": "W1662133657",
+          "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+          "year": 2010,
+          "cited_by_count": 2831
+        }
+      ],
+      "total_citations": 14473,
+      "visual_structure": "Paper_1 -> Paper_2 -> Paper_3",
+      "relation_chain": [
+        {
+          "from_paper": {
+            "id": "W2144211451",
+            "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+            "year": 1972
+          },
+          "to_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "Was_Overcome_By",
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "to_paper": {
+            "id": "W1662133657",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+            "year": 2010
+          },
+          "relation_type": "Adapts_to",
+          "narrative_relation": "Was_Adapted_By",
+          "direction": "chronological"
+        }
+      ],
+      "component_id": 130223330780800
+    },
+    {
+      "thread_type": "chain",
+      "pattern_type": "The Chain (线性链条)",
+      "title": "从 New techniques are introduced for assigning weights to index terms based on the  到 Vector Space Models (VSMs) of semantics are introduced as a method to represent  的演进之路",
+      "narrative": "**起源** (1973年): 论文《ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING》首次提出了 New techniques are introduced for assigning weights to index terms based on the  来解决 Standard theories for specifying term values (or weights) in automatic indexing ，开创了这一研究方向。然而，该工作在 未找到明确的局限性描述 方面仍存在局限性。\n\n**克服局限** (1975年): 针对前人工作在「未找到明确的局限性描述」方面的不足，论文《A vector space model for automatic indexing》通过 The authors propose a vector space model for automatic indexing, where entities  实现了突破性改进。\n\n**跨域迁移** (2010年): 论文《From Frequency to Meaning: Vector Space Models of Semantics》将前人在「原领域」的技术成功迁移到「新领域」，通过 Vector Space Models (VSMs) of semantics are introduced as a method to represent  验证了方法的泛化能力。",
+      "papers": [
+        {
+          "paper_id": "W2075006521",
+          "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+          "year": 1973,
+          "cited_by_count": 571
+        },
+        {
+          "paper_id": "W2165612380",
+          "title": "A vector space model for automatic indexing",
+          "year": 1975,
+          "cited_by_count": 7329
+        },
+        {
+          "paper_id": "W1662133657",
+          "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+          "year": 2010,
+          "cited_by_count": 2831
+        }
+      ],
+      "total_citations": 10731,
+      "visual_structure": "Paper_1 -> Paper_2 -> Paper_3",
+      "relation_chain": [
+        {
+          "from_paper": {
+            "id": "W2075006521",
+            "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+            "year": 1973
+          },
+          "to_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "relation_type": "Overcomes",
+          "narrative_relation": "Was_Overcome_By",
+          "direction": "chronological"
+        },
+        {
+          "from_paper": {
+            "id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975
+          },
+          "to_paper": {
+            "id": "W1662133657",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+            "year": 2010
+          },
+          "relation_type": "Adapts_to",
+          "narrative_relation": "Was_Adapted_By",
+          "direction": "chronological"
+        }
+      ],
+      "component_id": 130223330780800
+    }
+  ],
+  "survey_report": {
+    "title": "Deep Survey: natural language processing",
+    "abstract": "本综述基于知识图谱分析了 natural language processing 领域的演进历程。通过关系剪枝，我们从原始图谱中筛选出 16 篇高质量论文，并识别出 5 条关键演化路径。其中包括 2 条线性技术链条、1 个分化结构和 2 个汇聚结构，完整呈现了该领域的技术演进脉络、分化趋势和整合模式。",
+    "threads": [
+      {
+        "thread_id": 1,
+        "thread_name": "Thread 1: The Convergence (汇聚模式)",
+        "title": "多技术路线汇聚到 The authors conducted a systematic review and meta-analysis to aggregate and ana",
+        "pattern_type": "The Convergence (汇聚模式)",
+        "thread_type": "convergence",
+        "narrative": "**背景**: 在2020年之前，该领域存在多个独立的研究方向。**路线1** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线2** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题。这些方向各自为政，缺乏系统性整合。\n\n**汇聚**: 论文《Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis》(2020) 在此背景下应运而生，它通过 The authors conducted a systematic review and meta-analysis to aggregate and ana 将这 2 条独立路线有机整合，形成了统一的技术框架来解决 There is a lack of consolidated and systematic understanding of the clinical, la。\n\n**意义**: 这种多方向汇聚为该领域提供了理论整合的范例，使得原本分散的技术路线得以协同发挥作用，推动了领域的理论统一和实践深化。",
+        "papers": [
+          {
+            "paper_id": "W3009951436",
+            "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+            "year": 2020,
+            "cited_by_count": 2477,
+            "role": "center"
+          },
+          {
+            "paper_id": "W3002108456",
+            "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+            "year": 2020,
+            "cited_by_count": 22489
+          },
+          {
+            "paper_id": "W3001118548",
+            "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+            "year": 2020,
+            "cited_by_count": 51227
+          },
+          {
+            "paper_id": "W3001118548",
+            "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+            "year": 2020,
+            "cited_by_count": 51227
+          }
+        ],
+        "total_citations": 127420,
+        "visual_structure": "2 Routes -> Center",
+        "relation_stats": {
+          "total_relations": 2,
+          "relation_distribution": {
+            "Overcomes": 2
+          },
+          "dominant_relation": "Overcomes"
+        },
+        "relation_chain": [
+          {
+            "from_paper": {
+              "id": "W3002108456",
+              "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+              "year": 2020
+            },
+            "to_paper": {
+              "id": "W3009951436",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "被Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis整合",
+            "route_id": 1,
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W3001118548",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020
+            },
+            "to_paper": {
+              "id": "W3009951436",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "被Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis整合",
+            "route_id": 2,
+            "direction": "chronological"
+          }
+        ],
+        "visualization_data": {
+          "nodes": [
+            {
+              "id": "W3009951436",
+              "label": "Center",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020,
+              "citations": 2477,
+              "role": "center"
+            },
+            {
+              "id": "W3002108456",
+              "label": "Epidemiological and clinical c...",
+              "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+              "year": 2020,
+              "citations": 22489
+            },
+            {
+              "id": "W3001118548",
+              "label": "Clinical features of patients ...",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020,
+              "citations": 51227
+            },
+            {
+              "id": "W3001118548",
+              "label": "Clinical features of patients ...",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020,
+              "citations": 51227
+            }
+          ],
+          "edges": [
+            {
+              "source": "W3002108456",
+              "target": "W3009951436",
+              "type": "Overcomes",
+              "direction": "forward"
+            },
+            {
+              "source": "W3001118548",
+              "target": "W3009951436",
+              "type": "Overcomes",
+              "direction": "forward"
+            }
+          ],
+          "layout": "radial",
+          "direction_note": "箭头方向表示时间演进方向（早年份 → 晚年份）",
+          "pattern_note": "divergence=中心扩散, convergence=多源汇聚"
+        }
+      },
+      {
+        "thread_id": 2,
+        "thread_name": "Thread 2: The Divergence (分化模式)",
+        "title": "针对 Lack of understanding of clinical features and progression of 2019 novel coronav 的多技术路线博弈",
+        "pattern_type": "The Divergence (分化模式)",
+        "thread_type": "divergence",
+        "narrative": "**焦点**: 论文《Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China》(2020) 是该领域的基石工作，它聚焦于 Lack of understanding of clinical features and progression of 2019 novel coronav，但留下了 未找到明确的局限性描述 的问题。\n\n**分歧**: 学术界对此产生了不同的演进路线。**路线1** (纵向深化): 针对「未找到明确的局限性描述」，通过 The authors conducted a systematic review and meta-analysis to aggregate and ana 实现突破；**路线2** (微创新): 保留核心架构并扩展，采用 The authors conducted a systematic review and meta-analysis to aggregate and ana。\n\n**对比**: 这些路线共同推动了该领域痛点问题的解决，形成了多角度攻克的局面。（详见各路线论文的性能对比）",
+        "papers": [
+          {
+            "paper_id": "W3001118548",
+            "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+            "year": 2020,
+            "cited_by_count": 51227,
+            "role": "center"
+          },
+          {
+            "paper_id": "W3009951436",
+            "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+            "year": 2020,
+            "cited_by_count": 2477
+          },
+          {
+            "paper_id": "W3002108456",
+            "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+            "year": 2020,
+            "cited_by_count": 22489
+          },
+          {
+            "paper_id": "W3009951436",
+            "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+            "year": 2020,
+            "cited_by_count": 2477
+          }
+        ],
+        "total_citations": 78670,
+        "visual_structure": "Center -> 2 Routes",
+        "relation_stats": {
+          "total_relations": 2,
+          "relation_distribution": {
+            "Overcomes": 1,
+            "Extends": 1
+          },
+          "dominant_relation": "Overcomes"
+        },
+        "relation_chain": [
+          {
+            "from_paper": {
+              "id": "W3001118548",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020
+            },
+            "to_paper": {
+              "id": "W3009951436",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "Was_Overcome_By",
+            "route_id": 1,
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W3001118548",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020
+            },
+            "to_paper": {
+              "id": "W3002108456",
+              "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+              "year": 2020
+            },
+            "relation_type": "Extends",
+            "narrative_relation": "Was_Extended_By",
+            "route_id": 2,
+            "direction": "chronological"
+          }
+        ],
+        "visualization_data": {
+          "nodes": [
+            {
+              "id": "W3001118548",
+              "label": "Center",
+              "title": "Clinical features of patients infected with 2019 novel coronavirus in Wuhan, China",
+              "year": 2020,
+              "citations": 51227,
+              "role": "center"
+            },
+            {
+              "id": "W3009951436",
+              "label": "Clinical, laboratory and imagi...",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020,
+              "citations": 2477
+            },
+            {
+              "id": "W3002108456",
+              "label": "Epidemiological and clinical c...",
+              "title": "Epidemiological and clinical characteristics of 99 cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study",
+              "year": 2020,
+              "citations": 22489
+            },
+            {
+              "id": "W3009951436",
+              "label": "Clinical, laboratory and imagi...",
+              "title": "Clinical, laboratory and imaging features of COVID-19: A systematic review and meta-analysis",
+              "year": 2020,
+              "citations": 2477
+            }
+          ],
+          "edges": [
+            {
+              "source": "W3001118548",
+              "target": "W3009951436",
+              "type": "Overcomes",
+              "direction": "forward"
+            },
+            {
+              "source": "W3001118548",
+              "target": "W3002108456",
+              "type": "Extends",
+              "direction": "forward"
+            }
+          ],
+          "layout": "radial",
+          "direction_note": "箭头方向表示时间演进方向（早年份 → 晚年份）",
+          "pattern_note": "divergence=中心扩散, convergence=多源汇聚"
+        }
+      },
+      {
+        "thread_id": 3,
+        "thread_name": "Thread 3: The Convergence (汇聚模式)",
+        "title": "多技术路线汇聚到 The authors propose a vector space model for automatic indexing, where entities ",
+        "pattern_type": "The Convergence (汇聚模式)",
+        "thread_type": "convergence",
+        "narrative": "**背景**: 在1975年之前，该领域存在多个独立的研究方向。**路线1** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线2** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线3** (克服型): 识别了「未找到明确的局限性描述」，为中心论文提供了待解决的问题；**路线4** (克服型): 识别了「- The method relies heavily on medium frequency terms and skewed frequency distr」，为中心论文提供了待解决的问题。这些方向各自为政，缺乏系统性整合。\n\n**汇聚**: 论文《A vector space model for automatic indexing》(1975) 在此背景下应运而生，它通过 The authors propose a vector space model for automatic indexing, where entities  将这 4 条独立路线有机整合，形成了统一的技术框架来解决 In document retrieval systems, stored entities (documents) are often compared wi。\n\n**意义**: 这种多方向汇聚标志着该领域从探索阶段迈入系统化阶段，使得原本分散的技术路线得以协同发挥作用，推动了领域的理论统一和实践深化。",
+        "papers": [
+          {
+            "paper_id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975,
+            "cited_by_count": 7329,
+            "role": "center"
+          },
+          {
+            "paper_id": "W2075006521",
+            "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+            "year": 1973,
+            "cited_by_count": 571
+          },
+          {
+            "paper_id": "W2144211451",
+            "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+            "year": 1972,
+            "cited_by_count": 4313
+          },
+          {
+            "paper_id": "W2144211451",
+            "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+            "year": 1972,
+            "cited_by_count": 4313
+          },
+          {
+            "paper_id": "W1908696901",
+            "title": "A Theory of Indexing",
+            "year": 1975,
+            "cited_by_count": 120
+          },
+          {
+            "paper_id": "W2568360633",
+            "title": "Contribution to the Theory of Indexing",
+            "year": 1973,
+            "cited_by_count": 17
+          }
+        ],
+        "total_citations": 16663,
+        "visual_structure": "4 Routes -> Center",
+        "relation_stats": {
+          "total_relations": 4,
+          "relation_distribution": {
+            "Overcomes": 4
+          },
+          "dominant_relation": "Overcomes"
+        },
+        "relation_chain": [
+          {
+            "from_paper": {
+              "id": "W2075006521",
+              "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+              "year": 1973
+            },
+            "to_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "被A vector space model for automatic indexing整合",
+            "route_id": 1,
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W2144211451",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972
+            },
+            "to_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "被A vector space model for automatic indexing整合",
+            "route_id": 2,
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W1908696901",
+              "title": "A Theory of Indexing",
+              "year": 1975
+            },
+            "to_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "被A vector space model for automatic indexing整合",
+            "route_id": 3,
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W2568360633",
+              "title": "Contribution to the Theory of Indexing",
+              "year": 1973
+            },
+            "to_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "被A vector space model for automatic indexing整合",
+            "route_id": 4,
+            "direction": "chronological"
+          }
+        ],
+        "visualization_data": {
+          "nodes": [
+            {
+              "id": "W2165612380",
+              "label": "Center",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975,
+              "citations": 7329,
+              "role": "center"
+            },
+            {
+              "id": "W2075006521",
+              "label": "ON THE SPECIFICATION OF TERM V...",
+              "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+              "year": 1973,
+              "citations": 571
+            },
+            {
+              "id": "W2144211451",
+              "label": "A STATISTICAL INTERPRETATION O...",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972,
+              "citations": 4313
+            },
+            {
+              "id": "W2144211451",
+              "label": "A STATISTICAL INTERPRETATION O...",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972,
+              "citations": 4313
+            },
+            {
+              "id": "W1908696901",
+              "label": "A Theory of Indexing...",
+              "title": "A Theory of Indexing",
+              "year": 1975,
+              "citations": 120
+            },
+            {
+              "id": "W2568360633",
+              "label": "Contribution to the Theory of ...",
+              "title": "Contribution to the Theory of Indexing",
+              "year": 1973,
+              "citations": 17
+            }
+          ],
+          "edges": [
+            {
+              "source": "W2075006521",
+              "target": "W2165612380",
+              "type": "Overcomes",
+              "direction": "forward"
+            },
+            {
+              "source": "W2144211451",
+              "target": "W2165612380",
+              "type": "Overcomes",
+              "direction": "forward"
+            },
+            {
+              "source": "W1908696901",
+              "target": "W2165612380",
+              "type": "Overcomes",
+              "direction": "forward"
+            },
+            {
+              "source": "W2568360633",
+              "target": "W2165612380",
+              "type": "Overcomes",
+              "direction": "forward"
+            }
+          ],
+          "layout": "radial",
+          "direction_note": "箭头方向表示时间演进方向（早年份 → 晚年份）",
+          "pattern_note": "divergence=中心扩散, convergence=多源汇聚"
+        }
+      },
+      {
+        "thread_id": 4,
+        "thread_name": "Thread 4: The Chain (线性链条)",
+        "title": "从 The authors propose interpreting term specificity statistically, as a function o 到 Vector Space Models (VSMs) of semantics are introduced as a method to represent  的演进之路",
+        "pattern_type": "The Chain (线性链条)",
+        "thread_type": "chain",
+        "narrative": "**起源** (1972年): 论文《A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL》首次提出了 The authors propose interpreting term specificity statistically, as a function o 来解决 Term specificity in information retrieval is traditionally interpreted based on ，开创了这一研究方向。然而，该工作在 未找到明确的局限性描述 方面仍存在局限性。\n\n**克服局限** (1975年): 针对前人工作在「未找到明确的局限性描述」方面的不足，论文《A vector space model for automatic indexing》通过 The authors propose a vector space model for automatic indexing, where entities  实现了突破性改进。\n\n**跨域迁移** (2010年): 论文《From Frequency to Meaning: Vector Space Models of Semantics》将前人在「原领域」的技术成功迁移到「新领域」，通过 Vector Space Models (VSMs) of semantics are introduced as a method to represent  验证了方法的泛化能力。",
+        "papers": [
+          {
+            "paper_id": "W2144211451",
+            "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+            "year": 1972,
+            "cited_by_count": 4313
+          },
+          {
+            "paper_id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975,
+            "cited_by_count": 7329
+          },
+          {
+            "paper_id": "W1662133657",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+            "year": 2010,
+            "cited_by_count": 2831
+          }
+        ],
+        "total_citations": 14473,
+        "visual_structure": "Paper_1 -> Paper_2 -> Paper_3",
+        "relation_stats": {
+          "total_relations": 0,
+          "relation_distribution": {},
+          "dominant_relation": "Unknown"
+        },
+        "relation_chain": [
+          {
+            "from_paper": {
+              "id": "W2144211451",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972
+            },
+            "to_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "Was_Overcome_By",
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "to_paper": {
+              "id": "W1662133657",
+              "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+              "year": 2010
+            },
+            "relation_type": "Adapts_to",
+            "narrative_relation": "Was_Adapted_By",
+            "direction": "chronological"
+          }
+        ],
+        "visualization_data": {
+          "nodes": [
+            {
+              "id": "W2144211451",
+              "label": "Paper 1",
+              "title": "A STATISTICAL INTERPRETATION OF TERM SPECIFICITY AND ITS APPLICATION IN RETRIEVAL",
+              "year": 1972,
+              "citations": 4313
+            },
+            {
+              "id": "W2165612380",
+              "label": "Paper 2",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975,
+              "citations": 7329
+            },
+            {
+              "id": "W1662133657",
+              "label": "Paper 3",
+              "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+              "year": 2010,
+              "citations": 2831
+            }
+          ],
+          "edges": [
+            {
+              "source": "W2144211451",
+              "target": "W2165612380",
+              "type": "chronological_evolution",
+              "label": "1972 → 1975"
+            },
+            {
+              "source": "W2165612380",
+              "target": "W1662133657",
+              "type": "chronological_evolution",
+              "label": "1975 → 2010"
+            }
+          ],
+          "layout": "hierarchical",
+          "direction_note": "箭头方向表示时间演进方向（早年份 → 晚年份）",
+          "pattern_note": ""
+        }
+      },
+      {
+        "thread_id": 5,
+        "thread_name": "Thread 5: The Chain (线性链条)",
+        "title": "从 New techniques are introduced for assigning weights to index terms based on the  到 Vector Space Models (VSMs) of semantics are introduced as a method to represent  的演进之路",
+        "pattern_type": "The Chain (线性链条)",
+        "thread_type": "chain",
+        "narrative": "**起源** (1973年): 论文《ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING》首次提出了 New techniques are introduced for assigning weights to index terms based on the  来解决 Standard theories for specifying term values (or weights) in automatic indexing ，开创了这一研究方向。然而，该工作在 未找到明确的局限性描述 方面仍存在局限性。\n\n**克服局限** (1975年): 针对前人工作在「未找到明确的局限性描述」方面的不足，论文《A vector space model for automatic indexing》通过 The authors propose a vector space model for automatic indexing, where entities  实现了突破性改进。\n\n**跨域迁移** (2010年): 论文《From Frequency to Meaning: Vector Space Models of Semantics》将前人在「原领域」的技术成功迁移到「新领域」，通过 Vector Space Models (VSMs) of semantics are introduced as a method to represent  验证了方法的泛化能力。",
+        "papers": [
+          {
+            "paper_id": "W2075006521",
+            "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+            "year": 1973,
+            "cited_by_count": 571
+          },
+          {
+            "paper_id": "W2165612380",
+            "title": "A vector space model for automatic indexing",
+            "year": 1975,
+            "cited_by_count": 7329
+          },
+          {
+            "paper_id": "W1662133657",
+            "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+            "year": 2010,
+            "cited_by_count": 2831
+          }
+        ],
+        "total_citations": 10731,
+        "visual_structure": "Paper_1 -> Paper_2 -> Paper_3",
+        "relation_stats": {
+          "total_relations": 0,
+          "relation_distribution": {},
+          "dominant_relation": "Unknown"
+        },
+        "relation_chain": [
+          {
+            "from_paper": {
+              "id": "W2075006521",
+              "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+              "year": 1973
+            },
+            "to_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "relation_type": "Overcomes",
+            "narrative_relation": "Was_Overcome_By",
+            "direction": "chronological"
+          },
+          {
+            "from_paper": {
+              "id": "W2165612380",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975
+            },
+            "to_paper": {
+              "id": "W1662133657",
+              "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+              "year": 2010
+            },
+            "relation_type": "Adapts_to",
+            "narrative_relation": "Was_Adapted_By",
+            "direction": "chronological"
+          }
+        ],
+        "visualization_data": {
+          "nodes": [
+            {
+              "id": "W2075006521",
+              "label": "Paper 1",
+              "title": "ON THE SPECIFICATION OF TERM VALUES IN AUTOMATIC INDEXING",
+              "year": 1973,
+              "citations": 571
+            },
+            {
+              "id": "W2165612380",
+              "label": "Paper 2",
+              "title": "A vector space model for automatic indexing",
+              "year": 1975,
+              "citations": 7329
+            },
+            {
+              "id": "W1662133657",
+              "label": "Paper 3",
+              "title": "From Frequency to Meaning: Vector Space Models of Semantics",
+              "year": 2010,
+              "citations": 2831
+            }
+          ],
+          "edges": [
+            {
+              "source": "W2075006521",
+              "target": "W2165612380",
+              "type": "chronological_evolution",
+              "label": "1973 → 1975"
+            },
+            {
+              "source": "W2165612380",
+              "target": "W1662133657",
+              "type": "chronological_evolution",
+              "label": "1975 → 2010"
+            }
+          ],
+          "layout": "hierarchical",
+          "direction_note": "箭头方向表示时间演进方向（早年份 → 晚年份）",
+          "pattern_note": ""
+        }
+      }
+    ],
+    "metadata": {
+      "total_papers_analyzed": 86,
+      "papers_after_pruning": 16,
+      "total_threads": 5,
+      "generation_date": "2026-01-14T16:34:05.390302"
+    }
+  },
+  "summary": {
+    "original_papers": 86,
+    "pruned_papers": 16,
+    "total_threads": 5
+  }
+}

@@ -16,7 +16,7 @@ export default function ResultsList() {
 
   const loadResults = async () => {
     try {
-      const data = await apiClient.listResults()
+      const data = await apiClient.listStaticResults()
       setResults(data)
     } catch (error) {
       console.error('Failed to load results:', error)
